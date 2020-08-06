@@ -16,10 +16,20 @@ We can refer to the [Plaid API Docs](https://plaid.com/docs/) to connect and dow
 
 ![expenses](screenshots/expenses_per_category.png)
 
-In order to provide financial services like retirement planning, we need to obtain current income data. We can stream line this process by using the Plaid API. 
+In order to provide financial services like retirement planning, we need to obtain current income data. We can streamline this process by using the Plaid API. 
 
 ![income](screenshots/income_data.png)
 
+## Retirement Planner
+In this section we use the IEX API to fetch historical closing prices for a retirement portfolio. We can refer to the [iexfiance](https://addisonlynch.github.io/iexfinance/stable/stocks.html) documentation and use the `get_historical_data` function. Then we use pandas `pct_change, mean, and std` functions to calculate the portfolio's average daily returns and average daily volatility. Finally, we can project the retirement portfolio performance by using a nested 'for loop` to run Monte Carlo simulations 500 times for the next 30 years. 
 
+![monte_carlo](screenshots/monte_carlo.png)
 
+## Retirement Analysis
+In this section we use `numpy.quantile` function to estimate the expected returns at 30 years for the 10th, 50th, and 90th percentiles with a $20,000 initial investment. 
 
+![Returns](screenshots/expected_returns.png)
+
+For the purpose of this analysis, we will assume a 4% withdrawal rate from the retirement portfolio and compare it to the projected annual income we obtained from  Plaid. 
+
+![analysis](screenshots/analysis.png)
