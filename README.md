@@ -1,9 +1,9 @@
 # Using APIs to Connect to Banking and Investment Accounts
 ## Overview
 --- 
-The purpose of this notebook is to simulate budgeting and financial planning services. It uses API's to connect to customer's account transactions data for budget analysis, and to fetch historical closing prices for a retirement portfolio. Using the historical data, we will run Monte Carlo simulations to project the portfolio performance over 30 years and conduct retirement analysis. By using API's, we are able to obtain the latest data and create reports that link the client's banking and investment accounts. 
+The purpose of this notebook is to simulate budgeting and financial planning services. It uses APIs to connect to customer's account transactions data for budget analysis, and to fetch historical closing prices for a retirement portfolio. Using the historical data, we will run Monte Carlo simulations to project the portfolio performance over 30 years and conduct retirement analysis. By using APIs, we are able to obtain the latest data and create reports that link the client's banking and investment accounts. 
 ## Budget Analysis with the Plaid API
-In order to access data in Plaid's free developer Sandbox, we need to generate authentication tokens by using the `plaid-python api`. The firt step is to establish our credentials. For privacy and security reasons, personal keys should never be hardcoded, instead we should use environmental variables for this part of the process. 
+In order to access data in Plaid's free developer Sandbox, we need to generate authentication tokens by using the `plaid-python api`. The first step is to establish our credentials. For privacy and security reasons, personal keys should never be hardcoded, instead we should use environmental variables for this part of the process. 
 ```python 
 # Establish Credentials
 PLAID_CLIENT_ID = os.getenv('PLAID_CLIENT_ID')
@@ -12,7 +12,7 @@ PLAID_PUBLIC_KEY = os.getenv('PLAID_PUBLIC_KEY')
 PLAID_ENV = os.getenv('PLAID_ENV', 'sandbox')
 PLAID_PRODUCTS = os.getenv('PLAID_PRODUCTS', 'transactions')
 ```
-We can refer to the [Plaid API Docs](https://plaid.com/docs/) to connect and downdload transactions and account data to conduct budget analysis. The following pie chart breaks down expenses by category for the last 90 days. 
+We can refer to the [Plaid API Docs](https://plaid.com/docs/) to connect and download transactions and account data to conduct budget analysis. The following pie chart breaks down expenses by category for the last 90 days. 
 
 ![expenses](screenshots/expenses_per_category.png)
 
@@ -26,10 +26,12 @@ In this section we use the IEX API to fetch historical closing prices for a reti
 ![monte_carlo](screenshots/monte_carlo.png)
 
 ## Retirement Analysis
-In this section we use `numpy.quantile` function to estimate the expected returns at 30 years for the 10th, 50th, and 90th percentiles with a $20,000 initial investment. 
+In this section we use the `numpy.quantile` function to estimate the expected returns at 30 years for the 10th, 50th, and 90th percentiles with a $20,000 initial investment. 
 
 ![Returns](screenshots/expected_returns.png)
 
 For the purpose of this analysis, we will assume a 4% withdrawal rate from the retirement portfolio and compare it to the projected annual income we obtained from  Plaid. 
 
 ![analysis](screenshots/analysis.png)
+
+
